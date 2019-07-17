@@ -5,10 +5,11 @@ import random
 from std_msgs.msg import String
 
 def random_color():
+    led = random.randint(0, 9)
     r = random.randint(100, 255)
     g = random.randint(100, 255)
     b = random.randint(100, 255)
-    return (str(r)+" , "+str(g)+" , "+str(b))
+    return ("Led: "+str(led)+" color(RGB):"+str(r)+" , "+str(g)+" , "+str(b))
 
 
 
