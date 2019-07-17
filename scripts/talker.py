@@ -1,7 +1,16 @@
 #!/usr/bin/env python
 
 import rospy
+import random
 from std_msgs.msg import String
+
+def random_color():
+    r = random.randint(100, 255)
+    g = random.randint(100, 255)
+    b = random.randint(100, 255)
+    return (str(r)+" , "+str(g)+" , "+str(b))
+
+
 
 def talker():
     pub = rospy.Publisher('chatter', String, queue_size=10)
@@ -19,8 +28,11 @@ def talker():
 
     while not rospy.is_shutdown():
         
-        hello_str = "hello world %s" % rospy.get_time()
+        #hello_str = "hello world %s" % rospy.get_time()
         #rospy.loginfo(hello_str)    #publish to terminal
+        
+        hello_str = random_color()
+
         pub.publish(hello_str)      #publish to topic
         rate.sleep()                #sleeps at defined rate
 
